@@ -40,4 +40,6 @@ function animate()
 
 	ball.drawCircle();
 	console.log(ball.w)
+	ball.x += 2;
+	
 }
