@@ -4,6 +4,7 @@ var timer;
 var interval = 1000/60;
 var player;
 var boxes;
+var speed;
 
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d");
@@ -37,7 +38,10 @@ var ball = new GameObject(30, canvas.height/2,50,50,"red");
 ball.vx = -1
 ball.vy = -1
 
+function ballSpeed()
+{
 
+}
 
 function animate()
 {
@@ -51,23 +55,32 @@ function animate()
 	if(ball.x + ball.width/2 > canvas.width)
 	{
 		ball.vx *= -1
+		ball.color = "orange"
+		ball.speed = 100
 	}
 
 	//left side of canvas
-	if(ball.x - ball.width/2 < 0){
+	if(ball.x - ball.width/2 < 0)
+	{
 		ball.vx *= -1
-
+		ball.color = "purple"
+		ball.speed = 100
 	}
 
 	//bottom of canvas
-	if(ball.y + ball.height/2 > canvas.height){
+	if(ball.y + ball.height/2 > canvas.height)
+	{
 		ball.vy *= -1
+		ball.color = "red"
+		ball.speed = 100
 	}
 
 	//top of canvas
 	if(ball.y - ball.height/2 < 0)
 	{
 		ball.vy *= -1
+		ball.color = "yellow"
+		ball.speed = 100
 	}
 
 	
