@@ -33,18 +33,30 @@ timer = setInterval(animate, interval);
 // 	}
 // }
 
-var ball = new GameObject(30, canvas.height/2,50,50,"red");
+var Player1 = new GameObject(30, canvas.height/2,50,50,"red");
 
-ball.vx = -1
-ball.vy = -1
+Player1.vx = -1
+Player1.vy = -1
 
 //Level 1 code
 function animate()
 {
 	context.clearRect(0,0,canvas.width, canvas.height);	
 
-	ball.drawRect();
-	console.log(ball.x)
+	Player1.drawRect();
+	console.log(Player1.x)
+
+	if(w)
+		{
+			//console.log("Moving Right");
+			Player1.y += -2;
+		}
+		
+		if(s)
+		{
+			//console.log("Moving Right");
+			Player1.y += 2;
+		}
 	//ball.move()
 
 	//right side of canvas
