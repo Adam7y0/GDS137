@@ -5,6 +5,7 @@ var interval = 1000/60;
 var player;
 var boxes;
 var Player1;
+var prevX;
 
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d");
@@ -57,6 +58,29 @@ function animate()
 			//console.log("Moving Right");
 			Player1.y += 2;
 		}
+
+		//impede movement
+		if(Player1.y + Player1.height/2> canvas.height)
+		{
+				Player1.y = prevX  //www- Player1.height/2;
+				console.log("colliding");
+		}
+		else if(Player1.y - Player1.height/2< 0){
+			Player1.y = prevX 
+		}
+		else
+		{
+				prevX = Player1.y;
+		}
+		
+		
+			//top of canvas impede movement
+			if(Player1.y - Player1.height/2 < 0)
+			{
+				Player1.v = 0;
+				console.log("colliding");
+			}
+			
 	//ball.move()
 
 	//right side of canvas
