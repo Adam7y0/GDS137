@@ -6,38 +6,71 @@ var player;
 var boxes;
 var Player1;
 var prevX;
+var ball;
 
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d");
 
 timer = setInterval(animate, interval);
 
-// function GameObject(x,y,w,h,color)
-// {
-// 	this.x = x
-// 	this.y = y
-// 	this.w = w
-// 	this.h = h
-// 	this.color = color
+  /* function GameObject(x,y,w,h,color)
+   {
+   	this.x = x
+   	this.y = y
+   	this.w = w
+   	this.h = h
+   	this.color = color
+   
+	ball.move()
 
-// this.drawCircle = function()
-// 	{
-// 		context.save();
-// 			context.fillStyle = this.color;
-// 			context.beginPath();
-// 			context.translate(this.x, this.y);
-// 			context.arc(500, 0, this.w/2, 0, 360 *Math.PI/180, true);
-// 			context.closePath();
-// 			context.fill();
-// 		context.restore();
+	//right side of canvas
+	if(ball.x + ball.width/2 > canvas.width)
+	{
+		ball.vx *= -1
+	}
+
+	//left side of canvas
+	if(ball.x - ball.width/2 < 0)
+	{
+		ball.vx *= -1
+	}
+
+	//bottom of canvas
+	if(ball.y + ball.height/2 > canvas.height)
+	{
+		ball.vy *= -1
+	}
+
+	//top of canvas
+	if(ball.y - ball.height/2 < 0)
+	{
+		ball.vy *= -1
+	}
+
+	}*/
+  /* this.drawCircle = function()
+   	{
+   		context.save();
+   			context.fillStyle = this.color;
+   			context.beginPath();
+   			context.translate(this.x, this.y);
+   			context.arc(500, 0, this.w/2, 0, 360 *Math.PI/180, true);
+   			context.closePath();
+   			context.fill();
+   		context.restore();
 		
-// 	}
-// }
+   	}
+   }*/
 
 var Player1 = new GameObject(30, canvas.height/2,50,50,"red");
 
 Player1.vx = -1
 Player1.vy = -1
+
+ball = new GameObject();
+ball.width = 55;
+ball.vx = 2;
+ball.vy = 2;
 
 //Level 1 code
 function animate()
@@ -80,38 +113,31 @@ function animate()
 				Player1.v = 0;
 				console.log("colliding");
 			}
-			
-	//ball.move()
 
 	//right side of canvas
-	/*if(ball.x + ball.width/2 > canvas.width)
+	if(ball.x + ball.width/2 > canvas.width)
 	{
 		ball.vx *= -1
-		ball.color = "orange"
-		ball.speed = 100
 	}
 
 	//left side of canvas
 	if(ball.x - ball.width/2 < 0)
 	{
 		ball.vx *= -1
-		ball.color = "purple"
-		ball.speed = 100
 	}
 
 	//bottom of canvas
 	if(ball.y + ball.height/2 > canvas.height)
 	{
 		ball.vy *= -1
-		ball.color = "red"
-		ball.speed = 100
 	}
 
 	//top of canvas
 	if(ball.y - ball.height/2 < 0)
 	{
 		ball.vy *= -1
-		ball.color = "yellow"
-		ball.speed = 100
-	}*/
+	}
+
+			ball.move();
+			ball.drawCircle();
 }
