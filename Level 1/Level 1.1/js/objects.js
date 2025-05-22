@@ -113,18 +113,27 @@ function animate()
 				Player1.v = 0;
 				console.log("colliding");
 			}
-
+	
 	//right side of canvas
 	if(ball.x + ball.width/2 > canvas.width)
 	{
 		ball.vx *= -1
 	}
 
-	//left side of canvas
-	if(ball.x - ball.width/2 < 0)
-	{
+	if(Player1.hitTestObject(ball)){
 		ball.vx *= -1
 	}
+
+	//left side of canvas
+	/*if(ball.x - ball.width/2 < Player1.width)
+	{
+		ball.vx *= -1
+	}*/
+	// while (ball.x < Player1.width) 
+	// {
+	// 	player.vx *= -1;
+	// }
+
 
 	//bottom of canvas
 	if(ball.y + ball.height/2 > canvas.height)
