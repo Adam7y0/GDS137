@@ -69,10 +69,9 @@ Player1.vy = -1
 
 ball = new GameObject();
 ball.width = 55;
-ball.vx = 2;
-ball.vy = 2;
+ball.vx = 3;
+ball.vy = 3;
 
-//Level 1 code
 function animate()
 {
 	context.clearRect(0,0,canvas.width, canvas.height);	
@@ -120,21 +119,19 @@ function animate()
 		ball.vx *= -1
 	}
 
-	if(Player1.hitTestObject(ball)){
+	if(Player1.hitTestObject(ball))
+	{
 		ball.vx *= -1
 	}
 
 	//left side of canvas
-	/*if(ball.x - ball.width/2 < Player1.width)
+	if(ball.x - ball.width/2 < Player1.width)
 	{
-		ball.vx *= -1
-	}*/
-	// while (ball.x < Player1.width) 
-	// {
-	// 	player.vx *= -1;
-	// }
-
-
+		ball.x = 500
+		ball.y = 250
+		ball.vx *= 1
+	}
+	
 	//bottom of canvas
 	if(ball.y + ball.height/2 > canvas.height)
 	{
