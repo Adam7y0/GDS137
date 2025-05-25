@@ -8,9 +8,13 @@ var Player1;
 var Player2;
 var prevX;
 var ball;
+var p1Wins = 0;
+var p2Wins = 0;
 
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d");
+
+
 
 timer = setInterval(animate, interval);
 
@@ -78,7 +82,9 @@ ball.vy = 0;
 
 function animate() {
 	context.clearRect(0, 0, canvas.width, canvas.height);
-
+	//score HUD
+	context.font = "40px Arial";
+	context.fillText(`Player 1: ${p1Wins} | Player 2: ${p2Wins}`,canvas.width/2 - 200,40);
 	Player1.drawRect();
 	console.log(Player1.x)
 
@@ -149,6 +155,17 @@ function animate() {
 		ball.x = 500
 		ball.y = 250
 		ball.vx *= -1
+
+		p1Wins++;
+	}
+
+	
+	//left side of canvas
+	if (ball.x - ball.width / 2 < Player1.width) {
+		ball.x = 500
+		ball.y = 250
+		ball.vx *= 1
+		p2Wins++;
 	}
 
 	if (Player1.hitTestObject(ball)) {
@@ -168,12 +185,6 @@ function animate() {
 		ball.vx *= -1
 	}
 
-	//left side of canvas
-	if (ball.x - ball.width / 2 < Player1.width) {
-		ball.x = 500
-		ball.y = 250
-		ball.vx *= 1
-	}
 
 	if (Player2.hitTestObject(ball)) {
 
