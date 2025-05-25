@@ -82,11 +82,23 @@ ball.vy = 0;
 
 function animate() {
 	context.clearRect(0, 0, canvas.width, canvas.height);
+
 	//score HUD
 	context.font = "40px Arial";
 	context.fillText(`Player 1: ${p1Wins} | Player 2: ${p2Wins}`,canvas.width/2 - 200,40);
 	Player1.drawRect();
 	console.log(Player1.x)
+
+	//center line
+	context.save();
+	context.strokeStyle = "yellow"
+	context.beginPath();
+	context.moveTo(canvas.width/2, 0);
+	context.lineTo(canvas.width/2, 700);
+	context.closePath();
+	context.lineWidth = 5;
+	context.stroke();
+	context.restore();
 
 	Player2.drawRect();
 	console.log(Player2.x)
