@@ -5,6 +5,7 @@ var interval = 1000 / 60;
 var player;
 var boxes;
 var Player1;
+var Player2;
 var prevX;
 var ball;
 
@@ -63,9 +64,12 @@ timer = setInterval(animate, interval);
  }*/
 
 var Player1 = new GameObject(30, canvas.height / 2, 20, 20, "red");
+var Player2 = new GameObject(950, canvas.height / 2, 20, 20, "Blue");
 
 Player1.vx = -1
 Player1.vy = -1
+Player2.vx = -1
+Player2.vx = -1
 
 ball = new GameObject();
 ball.width = 55;
@@ -78,6 +82,10 @@ function animate() {
 	Player1.drawRect();
 	console.log(Player1.x)
 
+	Player2.drawRect();
+	console.log(Player2.x)
+
+	//Player 1
 	if (w) {
 		//console.log("Moving Right");
 		Player1.y += -2;
@@ -88,7 +96,18 @@ function animate() {
 		Player1.y += 2;
 	}
 
-	//impede movement
+	//Player 2
+	if (upArrow) {
+		//console.log("Moving Right");
+		Player2.y += -2;
+	}
+
+	if (downArrow) {
+		//console.log("Moving Right");
+		Player2.y += 2;
+	}
+
+	//impede movement bottom
 	if (Player1.y + Player1.height / 2 > canvas.height) {
 		Player1.y = prevX  //www- Player1.height/2;
 		console.log("colliding");
@@ -100,6 +119,18 @@ function animate() {
 		prevX = Player1.y;
 	}
 
+	//player 2 impede movement bottom
+	if (Player2.y + Player2.height / 2 > canvas.height) {
+		Player2.y = prevX  //www- Player1.height/2;
+		console.log("colliding");
+	}
+	else if (Player2.y - Player2.height / 2 < 0) {
+		Player2.y = prevX
+	}
+	else {
+		prevX = Player2.y;
+	}
+
 
 	//top of canvas impede movement
 	if (Player1.y - Player1.height / 2 < 0) {
@@ -107,10 +138,16 @@ function animate() {
 		console.log("colliding");
 	}
 
-
+	//top of canvas impede movement player 2
+		if (Player2.y - Player2.height / 2 < 0) {
+		Player2.v = 0;
+		console.log("colliding");
+	}
 
 	//right side of canvas
 	if (ball.x + ball.width / 2 > canvas.width) {
+		ball.x = 500
+		ball.y = 250
 		ball.vx *= -1
 	}
 
@@ -136,6 +173,22 @@ function animate() {
 		ball.x = 500
 		ball.y = 250
 		ball.vx *= 1
+	}
+
+	if (Player2.hitTestObject(ball)) {
+
+		console.log(`Player Y :${Player1.y}\nHeight: ${Player2.y - Player2.height/3}\n Ball X: ${ball.y}`)
+		//Top of paddle
+		if (ball.y < Player2.y - Player2.height / 3) {
+			ball.vy = -1;
+		}
+
+		//Bottom of paddle
+		if  (ball.y > Player2.y - 2*(Player2.height / 3)) {
+			ball.vy = 1;
+		}
+
+		ball.vx *= -1
 	}
 
 	//bottom of canvas

@@ -20,6 +20,14 @@ function press(e)
 	{
 		s = true;
 	}
+	if(e.keyCode == 38)
+	{
+		upArrow = true;
+	}
+	if(e.keyCode == 40)
+	{
+		downArrow = true;
+	}
 }
 
 function release(e)
@@ -34,5 +42,13 @@ function release(e)
 	if(e.keyCode == 83)
 	{
 		s = false;
+	}
+	if(e.keyCode == 38)
+	{
+		upArrow = false;
+	}
+	if(e.keyCode == 40)
+	{
+		downArrow = false;
 	}
 }
