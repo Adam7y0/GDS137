@@ -1,7 +1,6 @@
 // JavaScript Document
 function GameObject(x,y,w,h,color)
 {
-	
 	//Default Values
 	if(x == undefined)
 		this.x = canvas.width/2;

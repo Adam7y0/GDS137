@@ -14,8 +14,6 @@ var p2Wins = 0;
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d");
 
-
-
 timer = setInterval(animate, interval);
 
 /* function GameObject(x,y,w,h,color)
@@ -69,6 +67,8 @@ timer = setInterval(animate, interval);
 
 var Player1 = new GameObject(30, canvas.height / 2, 20, 20, "red");
 var Player2 = new GameObject(950, canvas.height / 2, 20, 20, "Blue");
+var img = document.getElementById("ric");
+
 
 Player1.vx = -1
 Player1.vy = -1
@@ -82,6 +82,8 @@ ball.vy = 0;
 
 function animate() {
 	context.clearRect(0, 0, canvas.width, canvas.height);
+
+	
 
 	//score HUD
 	context.font = "40px Arial";
@@ -226,4 +228,5 @@ function animate() {
 
 	ball.move();
 	ball.drawCircle();
+	context.drawImage(img, ball.x - ball.width/2, ball.y - ball.width/2, ball.width, ball.width);
 }
