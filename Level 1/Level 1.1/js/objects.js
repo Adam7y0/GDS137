@@ -85,11 +85,11 @@ function animate() {
 	context.clearRect(0, 0, canvas.width, canvas.height);
 
 	//score HUD
-	context.font = "40px Arial";
-	context.fillText(`Score: ${p1Wins}`,50,40);
+	/*context.font = "40px Arial";
+	context.fillText(`Score: ${p1Wins}`,50,40);*/
+	
 	
 
-	
 	//Player 1
 	if (a) {
 		//console.log("Moving left");
@@ -125,10 +125,10 @@ function animate() {
 	}*/
 
 	//impede movement right
-	if (Player1.x + Player1.width / 2 > canvas.width) {
+	/*if (Player1.x + Player1.width / 2 > canvas.width) {
 		player1.x *= 0;
 		console.log("colliding");
-	}
+	}*/
 	/*else if (Player1.y - Player1.height / 2 < 0) {
 		Player1.y = prevX
 	}
@@ -137,10 +137,10 @@ function animate() {
 	}*/
 
 	//impede movement left
-	if (Player1.x - Player1.width / 2 < 0) {
+	/*if (Player1.x - Player1.width / 2 < 0) {
 		Player1.x *= 0;
 		console.log("colliding");
-	}
+	}*/
 
 	//player 2 impede movement bottom
 	/*if (Player2.y + Player2.height / 2 > canvas.height) {
@@ -218,10 +218,6 @@ function animate() {
 
 		ball.vx *= -1
 	}*/
-
-	
-	
-
 	
 	//context.drawImage(img, ball.x - ball.width/2, ball.y - ball.width/2, ball.width, ball.width);
 
